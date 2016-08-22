@@ -43,6 +43,8 @@ $(function() {
       } else if (result && result.error) {
         console.log('error: ' + result.error);
         show_sign_in();
+      } else {
+        show_sign_in();
       }
     }
   };
