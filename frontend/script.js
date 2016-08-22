@@ -16,6 +16,11 @@ $(function() {
     });
   };
 
+  var logout = function() {
+    localStorage.removeItem('id_token');
+    window.location.href = '/';
+  };
+
   var show_logged_in = function() {
     $('#login').hide();
     $('#authorized').show();
@@ -43,6 +48,7 @@ $(function() {
   };
 
   $('#authorize').click(authorize);
+  $('#logout').click(logout);
 
   parseHash();
 
