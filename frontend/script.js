@@ -43,6 +43,10 @@ $(function() {
       .fail(function(err) {
         console.log('err');
         console.error(err);
+        if (err.responseJSON && err.responseJSON.name === 'TokenExpiredError') {
+          localStorage.removeItem('id_token');
+          show_sign_in();
+        }
       });
   };
 
