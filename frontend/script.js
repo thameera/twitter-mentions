@@ -39,6 +39,10 @@ $(function() {
     })
       .done(function(res) {
         console.log(res);
+        var text = res.map(function(x) {
+          return '<a href="https://twitter.com/' + x.name + '">' + x.name + '</a/> [' + x.count + ']';
+        }).join(', ');
+        $('#mentions').html(text);
       })
       .fail(function(err) {
         console.log('err');
