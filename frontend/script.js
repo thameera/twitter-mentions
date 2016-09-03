@@ -54,9 +54,15 @@ $(function() {
       });
   };
 
+  var isTokenExpired = function(token) {
+    var decoded = auth0.decodeJwt(token);
+    var now = (new Date()).getTime()/1000;
+    return decoded.exp < now;
+  };
+
   var parseHash = function() {
     var token = localStorage.getItem('id_token');
-    if (null != token) {
+    if (token !== null && !isTokenExpired(token)) {
       show_logged_in(token);
     } else {
       var result = auth0.parseHash(window.location.hash);
